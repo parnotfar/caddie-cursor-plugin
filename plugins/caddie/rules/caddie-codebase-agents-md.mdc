@@ -1,0 +1,30 @@
+---
+description: When editing the Caddie.sh codebase (repo containing dot_caddie, modules/dot_caddie_*, AGENTS.md), follow AGENTS.md — modules in modules/, dot_caddie_<module> naming, Makefile install, caddie cli:* for output, caddie core:lint before PR.
+alwaysApply: false
+---
+
+# Caddie codebase conventions (AGENTS.md)
+
+When editing the **Caddie.sh** codebase (a repository that contains `dot_caddie`, `modules/dot_caddie_*`, and `AGENTS.md`), follow these conventions so changes integrate correctly:
+
+## Structure
+
+- **Modules**: All modules live in the `modules/` directory. Module files are named `dot_caddie_<module>` (e.g. `dot_caddie_rust`, `dot_caddie_cursor`).
+- **Entry point**: Main entry is `dot_caddie`; core system files include `dot_caddie_prompt`, `dot_caddie_modules`, `dot_caddie_version`, and `dot_caddie_debug`.
+- **Makefile**: New or changed modules must be reflected in the Makefile `install-dot` target so modules are copied to `~/.caddie_modules/`.
+
+## Command pattern
+
+- Use the `<module>:<command>` namespace (e.g. `caddie git:gacp`, `caddie cursor:open`).
+- Functions are named `caddie_<module>_<command>` and must be exported with `export -f`.
+- Source the CLI module for output: `source "$HOME/.caddie_modules/.caddie_cli"`. Use `caddie cli:title`, `caddie cli:check`, `caddie cli:red`, `caddie cli:usage`, etc. — never raw `echo` for user-facing messages.
+
+## Completions
+
+- Expose completions via `caddie_<module>_commands()` (space-separated list of `module:command` strings) or by calling `caddie_completion_register` inside the module. Do not edit the global completion function directly.
+
+## Before PR
+
+- Run `caddie core:lint` on modified files and fix any issues. All linter checks must pass.
+
+For full details, see the repository’s **AGENTS.md**.

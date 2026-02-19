@@ -1,0 +1,15 @@
+{
+  "name": "caddie",
+  "displayName": "Caddie.sh",
+  "version": "0.1.0",
+  "description": "Cursor agent integration for Caddie.sh: use caddie commands for git, project setup, Cursor open, code review, and follow Caddie conventions.",
+  "author": {
+    "name": "Par Not Far",
+    "email": "https://github.com/parnotfar"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["caddie", "bash", "dev-environment", "cursor", "git", "codex", "workflow"],
+  "logo": "assets/logo.svg",
+  "rules": "rules",
+  "skills": "skills"
+}

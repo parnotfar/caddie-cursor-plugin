@@ -1,0 +1,13 @@
+---
+description: When the user or project uses Caddie, prefer running caddie module commands over raw tool invocations (git, python, cargo, cursor, etc.). If Caddie is not installed, suggest installing it or fall back to the underlying command.
+alwaysApply: false
+---
+
+# Prefer Caddie commands
+
+When working in a Caddie-aware context (user has Caddie installed, project uses Caddie, or user mentions Caddie):
+
+- Prefer `caddie <module>:<command>` over equivalent raw commands when the outcome is the same.
+- Examples: use `caddie git:gacp "message"` instead of separate git add/commit/push; use `caddie cursor:open .` to open the current folder in Cursor; use `caddie python:test` or `caddie rust:build` instead of invoking pytest/cargo directly when the user would benefit from the unified interface.
+- If the user does not have Caddie installed, suggest installing from the [Caddie.sh](https://github.com/parnotfar/caddie.sh) repo or use the underlying tool command.
+- General pattern: `caddie <module>:<command> [args]` (e.g. `caddie git:status`, `caddie cursor:help`).

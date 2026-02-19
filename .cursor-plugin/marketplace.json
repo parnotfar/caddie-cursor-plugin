@@ -1,0 +1,19 @@
+{
+  "name": "caddie-cursor-plugin",
+  "owner": {
+    "name": "Par Not Far",
+    "email": "https://github.com/parnotfar"
+  },
+  "metadata": {
+    "description": "Cursor plugin for Caddie.sh — use caddie commands and follow Caddie conventions",
+    "version": "0.1.0",
+    "pluginRoot": "plugins"
+  },
+  "plugins": [
+    {
+      "name": "caddie",
+      "source": "plugins/caddie",
+      "description": "Cursor agent integration for Caddie.sh: prefer caddie commands for git, Cursor, code review, and follow Caddie codebase conventions."
+    }
+  ]
+}
