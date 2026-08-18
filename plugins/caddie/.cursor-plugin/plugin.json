@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Cursor agent integration for Caddie.sh: use caddie commands for git, project setup, Cursor open, code review, and follow Caddie conventions.",
   "author": {
-    "name": "Par Not Far",
+    "name": "ParNotFar",
     "email": "https://github.com/parnotfar"
   },
   "license": "Apache-2.0",
