@@ -7,7 +7,8 @@ alwaysApply: false
 
 When working in a Caddie-aware context (user has Caddie installed, project uses Caddie, or user mentions Caddie):
 
-- Prefer `caddie <module>:<command>` over equivalent raw commands when the outcome is the same.
-- Examples: use `caddie git:gacp "message"` instead of separate git add/commit/push; use `caddie cursor:open .` to open the current folder in Cursor; use `caddie python:test` or `caddie rust:build` instead of invoking pytest/cargo directly when the user would benefit from the unified interface.
+- Discover installed modules with `caddie agent:exec core:modules:list`, then discover a module with `caddie agent:exec core:module:commands <module>` or `<module>:help`.
+- Prefer a discovered Caddie wrapper over an equivalent raw command when the outcome is the same.
+- In agent shells, execute through `caddie agent:exec <module>:<command> [args]`.
 - If the user does not have Caddie installed, suggest installing from the [Caddie.sh](https://github.com/parnotfar/caddie.sh) repo or use the underlying tool command.
-- General pattern: `caddie <module>:<command> [args]` (e.g. `caddie git:status`, `caddie cursor:help`).
+- Do not assume optional plugins such as Git tools are part of core, and do not rely on a static command list.

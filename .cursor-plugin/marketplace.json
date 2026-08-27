@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Cursor plugin for Caddie.sh — use caddie commands and follow Caddie conventions",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
       "name": "caddie",
       "source": "plugins/caddie",
-      "description": "Cursor agent integration for Caddie.sh: prefer caddie commands for git, Cursor, code review, and follow Caddie codebase conventions."
+      "description": "Cursor agent integration for Caddie.sh: discover installed modules, execute through agent:exec, and follow Caddie conventions."
     }
   ]
 }

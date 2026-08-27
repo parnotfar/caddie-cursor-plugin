@@ -4,21 +4,24 @@ Cursor Marketplace plugin for [Caddie.sh](https://github.com/parnotfar/caddie.sh
 
 ## What is Caddie?
 
-Caddie.sh is a modular Bash development environment manager (“common language for tooling”). You run commands like:
+Caddie.sh is a modular Bash development environment manager (“common language for tooling”). Its installed CLI is the source of truth:
 
-- `caddie git:gacp "message"` — add, commit, push
-- `caddie cursor:open .` — open current folder in Cursor
-- `caddie python:test`, `caddie rust:build` — language workflows
-- `caddie codex:review` — code review on the latest commit
+```bash
+caddie agent:exec core:modules:list
+caddie agent:exec core:module:commands <module>
+caddie agent:exec <module>:<command> [args]
+```
 
 See the [Caddie.sh repo](https://github.com/parnotfar/caddie.sh) for install and full docs.
 
 ## What this plugin does
 
 - **Rules**: Prefer Caddie commands over raw git/cursor/python/etc. when the user or project uses Caddie; when editing the Caddie codebase, follow AGENTS.md (modules, Makefile, CLI output, lint).
-- **Skills**: Caddie + Cursor (open, setup, verify, AI helpers); Caddie command reference (git, cursor, codex, and other modules).
+- **Skills**: Core Caddie discovery/execution protocol plus a thin Cursor-specific skill. Neither embeds a static command catalog.
 
 The plugin does **not** replace the Caddie CLI. You still need Caddie installed; this plugin teaches the Cursor agent when and how to use it.
+
+Version: **0.2.0**
 
 ## Install
 
@@ -40,7 +43,7 @@ node scripts/validate-template.mjs
 - `plugins/caddie/` — the Caddie plugin:
   - `.cursor-plugin/plugin.json` — name, description, logo, rules, skills.
   - `rules/` — prefer Caddie commands; Caddie codebase (AGENTS.md) conventions.
-  - `skills/` — `caddie-cursor`, `caddie-commands`.
+  - `skills/` — discovery-first `caddie-commands` and thin `caddie-cursor` skills.
   - `assets/logo.svg` — plugin logo.
 
 ## Publish

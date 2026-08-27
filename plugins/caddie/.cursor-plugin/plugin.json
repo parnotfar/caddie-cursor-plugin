@@ -1,8 +1,8 @@
 {
   "name": "caddie",
   "displayName": "Caddie.sh",
-  "version": "0.1.0",
-  "description": "Cursor agent integration for Caddie.sh: use caddie commands for git, project setup, Cursor open, code review, and follow Caddie conventions.",
+  "version": "0.2.0",
+  "description": "Cursor agent integration for Caddie.sh: discover installed modules, execute through agent:exec, and follow Caddie conventions.",
   "author": {
     "name": "ParNotFar",
     "email": "https://github.com/parnotfar"

@@ -1,48 +1,38 @@
 ---
 name: caddie-commands
-description: Reference for Caddie module commands (git, cursor, codex, python, rust, swift, etc.). Use when suggesting or running caddie commands for workflow tasks.
+description: Use the installed Caddie CLI as the source of truth for module discovery and command execution in Cursor agent shells.
 ---
 
-# Caddie command reference
+# Caddie command discovery
 
-Use this when the user works with Caddie and you need to suggest or run the right `caddie <module>:<command>`.
+This Cursor marketplace skill follows the core Caddie protocol. It intentionally does not carry a static command catalog because core and optional plugin modules are released independently.
 
-## General
+## Discover before acting
 
-- **Help**: `caddie help`, `caddie <module>:help` (e.g. `caddie cursor:help`).
-- **Reload**: `caddie reload` — reload Caddie after config or module changes.
+```bash
+caddie agent:exec core:modules:list
+caddie agent:exec core:module:commands <module>
+caddie agent:exec <module>:help
+```
 
-## Git (module: git)
+Treat discovery output as authoritative. Never infer a command from this skill, old documentation, or another Caddie installation.
 
-- `caddie git:status` — status
-- `caddie git:gacp "message"` — add, commit, push in one step
-- `caddie git:new:branch <name>` — create and publish branch
-- `caddie git:clone <repo>` — clone
-- `caddie git:pr:create "title" "body"` — create pull request
+## Execute in agent shells
 
-## Cursor (module: cursor)
+Use `caddie agent:exec` so Caddie loads a fresh environment without inherited Bash function state:
 
-- `caddie cursor:open [path]` — open in Cursor
-- `caddie cursor:new <type> <name>` — new project and open
-- `caddie cursor:setup`, `caddie cursor:verify` — setup and verify
-- `caddie cursor:ai:explain|refactor|test|docs|review <file>` — AI helper prompt files
-- `caddie cursor:ext:install <id>`, `caddie cursor:ext:list` — extensions
+```bash
+caddie agent:exec <module>:<command> [args]
+```
 
-## Codex (module: codex, when available)
+Prefer a discovered Caddie wrapper when it matches the requested outcome. If no wrapper exists, use the underlying tool and state the fallback.
 
-- `caddie codex:review [dir]` — review latest commit
-- `caddie codex:review:watch <dir>` — enable post-commit review
-- `caddie codex:review:watch:stop <dir>` — disable watch
+## Module skills
 
-## Language / environment (examples)
+Core Caddie owns the discovery and execution protocol. An optional module may provide a separate thin skill for domain safety, sequencing, or interpretation. Apply both when such a skill is installed; do not expect the module skill to duplicate its command list.
 
-- **Python**: `caddie python:test`, and other python:* commands
-- **Rust**: `caddie rust:build`, and other rust:* commands
-- **Swift**: `caddie swift:*` (e.g. format, lint)
-- **JavaScript/Node**: `caddie js:*`
+Optional modules, including Git workflow commands, must be discovered rather than assumed to be part of core.
 
-## MCP (module: mcp)
+## Reload after installation
 
-- `caddie mcp:server:set <path>`, `caddie mcp:server:get` — set/get MCP server path for Cursor/Codex.
-
-Always prefer the Caddie command when it matches the user’s intent and Caddie is available.
+After installing or upgrading core or a plugin, run `caddie reload`, then repeat discovery.
