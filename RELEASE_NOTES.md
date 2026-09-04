@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.3.0 — 2026-09-04
+
+- Updated Cursor guidance for caddie.sh 11.5's generated command and namespace help.
+- Preserved the core-plus-supplemental skill model: core owns discovery and execution, while module skills add domain guidance.
+- Added symmetric `--help` and `:help` examples without introducing a static command catalog.
+
 ## 0.2.0 — 2026-08-27
 
 - Replaced stale static command catalogs with installed-CLI discovery

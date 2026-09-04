@@ -16,6 +16,8 @@ description: Use Caddie's installed Cursor module for Cursor-specific workflows,
 ```bash
 caddie agent:exec core:module:commands cursor
 caddie agent:exec cursor:help
+caddie agent:exec cursor:<command> --help
+caddie agent:exec cursor:<command>:help
 ```
 
 Use only commands returned by the installed module. Execute agent-shell commands through `caddie agent:exec`.
@@ -23,4 +25,4 @@ Use only commands returned by the installed module. Execute agent-shell commands
 ## Notes
 
 - Requires both Caddie and Cursor. Use discovered diagnostic commands rather than assuming a specific command name.
-- This thin Cursor skill composes with the core Caddie discovery skill and does not duplicate the live command catalog.
+- This thin Cursor skill composes with the core Caddie discovery skill and does not duplicate the live command catalog. Caddie 11.5 or later supplies symmetric command and namespace help from live metadata.

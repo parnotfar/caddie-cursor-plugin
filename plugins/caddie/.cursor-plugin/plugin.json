@@ -1,7 +1,7 @@
 {
   "name": "caddie",
   "displayName": "Caddie.sh",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Cursor agent integration for Caddie.sh: discover installed modules, execute through agent:exec, and follow Caddie conventions.",
   "author": {
     "name": "ParNotFar",

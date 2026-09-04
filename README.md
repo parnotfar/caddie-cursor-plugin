@@ -9,6 +9,8 @@ Caddie.sh is a modular Bash development environment manager (“common language 
 ```bash
 caddie agent:exec core:modules:list
 caddie agent:exec core:module:commands <module>
+caddie agent:exec <module>:<command> --help
+caddie agent:exec <module>:<command>:help
 caddie agent:exec <module>:<command> [args]
 ```
 
@@ -21,7 +23,9 @@ See the [Caddie.sh repo](https://github.com/parnotfar/caddie.sh) for install and
 
 The plugin does **not** replace the Caddie CLI. You still need Caddie installed; this plugin teaches the Cursor agent when and how to use it.
 
-Version: **0.2.0**
+Version: **0.3.0**
+
+This release targets caddie.sh 11.5.0 or later, where the core help harness generates command and namespace help from live module metadata. Module-specific skills remain supplemental and do not duplicate command catalogs.
 
 ## Install
 

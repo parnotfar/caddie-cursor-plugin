@@ -13,9 +13,13 @@ This Cursor marketplace skill follows the core Caddie protocol. It intentionally
 caddie agent:exec core:modules:list
 caddie agent:exec core:module:commands <module>
 caddie agent:exec <module>:help
+caddie agent:exec <module>:<command> --help
+caddie agent:exec <module>:<command>:help
 ```
 
 Treat discovery output as authoritative. Never infer a command from this skill, old documentation, or another Caddie installation.
+
+On caddie.sh 11.5.0 or later, the last two forms are symmetric and also work for namespaces. A module may override generated output with richer help, but its supplemental skill still owns only domain guidance and safety.
 
 ## Execute in agent shells
 
